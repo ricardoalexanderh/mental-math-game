@@ -584,7 +584,7 @@ const MentalArithmeticGame: React.FC = () => {
               {/* Difficulty Level - Separate Full Width Section */}
               <div className="bg-indigo-50 rounded-2xl p-6">
                 <label className="block text-xl font-bold text-indigo-800 mb-4">Difficulty Level:</label>
-                <div className="grid grid-cols-5 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                   {[1, 2, 3, 4, 5].map(level => {
                     const levelNames = ['Beginner', 'Easy', 'Medium', 'Hard', 'Expert'];
                     const levelColors = [
@@ -609,14 +609,14 @@ const MentalArithmeticGame: React.FC = () => {
                           playSound('settingChange');
                           updateSettings(prev => ({...prev, level: level as GameSettings['level']}));
                         }}
-                        className={`p-4 rounded-xl font-bold text-center transition-all transform hover:scale-105 border-2 ${
+                        className={`p-3 sm:p-4 rounded-xl font-bold text-center transition-all transform hover:scale-105 border-2 min-h-[80px] sm:min-h-[90px] flex flex-col items-center justify-center ${
                           settings.level === level 
                             ? selectedColor[level - 1]
                             : `${levelColors[level - 1]} hover:shadow-md`
                         }`}
                       >
-                        <div className="text-2xl mb-1">{level}</div>
-                        <div className="text-xs">{levelNames[level - 1]}</div>
+                        <div className="text-xl sm:text-2xl mb-1 leading-none">{level}</div>
+                        <div className="text-xs sm:text-sm leading-tight">{levelNames[level - 1]}</div>
                       </button>
                     );
                   })}
